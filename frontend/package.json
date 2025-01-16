@@ -7,7 +7,7 @@
   "name": "ACOMDIR",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",  // Le script build pour React
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
