@@ -28,7 +28,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.12'  # Version Python valide
+          python-version: '3.13.1'  # Version Python valide
 
       # 3. Installer les dépendances Python
       - name: Install Python dependencies
