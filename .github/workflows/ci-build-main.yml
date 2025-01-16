@@ -68,7 +68,7 @@ jobs:
       # 9. Construire l'application Flask (si nécessaire pour des étapes supplémentaires avant le déploiement)
       - name: Build Flask app
         run: |
-          flask db upgrade  # Appliquer les migrations de la base de données Flask si vous utilisez Flask-Migrate
+          # Vide pour le moment
 
       # 10. Construire le frontend (React ou Vue)
       - name: Build frontend
