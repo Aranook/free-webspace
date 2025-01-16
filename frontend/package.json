@@ -3,7 +3,7 @@
   "meta": {
     "author": "ACOMDIR",
     "contact": "https://www.facebook.com/acomdir/",
-    "note": "Supprimer les données de ce fichier package.json avant de faire npm install sipossible"
+    "note": "Supprimer les données de ce fichier package.json avant de faire npm install si possible"
   },
   "name": "ACOMDIR",
   "dependencies": {
