@@ -46,6 +46,7 @@ jobs:
           npm install vue-router  # Installer vue-router
           npm install axios  # Installer axios
           npm install bootstrap  # Installer Bootstrap
+          npm install react-scripts # React-scripts
 
       # 5. Configurer les variables d'environnement (si nécessaire)
       - name: Set environment variables
