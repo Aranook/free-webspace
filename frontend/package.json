@@ -6,6 +6,12 @@
     "note": "Supprimer les données de ce fichier package.json avant de faire npm install si possible"
   },
   "name": "ACOMDIR",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",  // Le script build pour React
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
