@@ -1,83 +1,84 @@
-## GitHub Actions workflow
-## Auteur : ACOMDIR
-## Url contact: https://www.facebook.com/acomdir/
-## Please come vote my page Facebook to support me in the development of this open source project.
+## Project
+# GitHub Actions workflow
+# Auteur : ACOMDIR
+# Url contact: https://www.facebook.com/acomdir/
+# Please come vote my page Facebook to support me in the development of this open source project.
 
 name: ci-build-main
 
 on:
-push:
-    branches: ["main"]
-pull_request:
-    branches: ["main"]
-workflow_dispatch:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    branches:
+      - "main"
+  workflow_dispatch:
 
 jobs:
-build_and_deploy:
+  build_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. Vérifier le code source
-    - name: Checkout code
+      # 1. Vérifier le code source
+      - name: Checkout code
         uses: actions/checkout@v4
 
-    # 2. Configurer Python
-    - name: Set up Python
+      # 2. Configurer Python
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
-        python-version: '3.13.1'  # Choisir la version Python appropriée
+          python-version: '3.12'  # Version Python valide
 
-    # 3. Installer les dépendances Python
-    - name: Install Python dependencies
+      # 3. Installer les dépendances Python
+      - name: Install Python dependencies
         run: |
-        python -m pip install --upgrade pip  # Mettre à jour pip
-        pip install -r backend/requirements.txt  # Installer les dépendances Python spécifiées dans le fichier requirements.txt
+          python -m pip install --upgrade pip  # Mettre à jour pip
+          pip install -r backend/requirements.txt  # Installer les dépendances Python spécifiées dans le fichier requirements.txt
 
-    # 4. Installer les dépendances frontend (React et Vue)
-    - name: Install frontend dependencies
+      # 4. Installer les dépendances frontend (React et Vue)
+      - name: Install frontend dependencies
         working-directory: frontend
         run: |
-        npm install react react-dom  # Installer React et React DOM
-        npm install vue  # Installer Vue
-        npm install react-router-dom  # Installer react-router-dom
-        npm install vue-router  # Installer vue-router
-        npm install axios  # Installer axios
-        npm install bootstrap  # Installer Bootstrap
+          npm install react react-dom  # Installer React et React DOM
+          npm install vue  # Installer Vue
+          npm install react-router-dom  # Installer react-router-dom
+          npm install vue-router  # Installer vue-router
+          npm install axios  # Installer axios
+          npm install bootstrap  # Installer Bootstrap
 
-    # 5. Configurer les variables d'environnement (si nécessaire)
-    - name: Set environment variables
+      # 5. Configurer les variables d'environnement (si nécessaire)
+      - name: Set environment variables
         run: echo "FLASK_APP=backend/app.py" >> $GITHUB_ENV  # Configurer Flask app
 
-    # 6. Configurer la clé API NewsAPI dans les secrets
-    - name: Set NewsAPI key
+      # 6. Configurer la clé API NewsAPI dans les secrets
+      - name: Set NewsAPI key
         run: echo "NEWSAPI_KEY=${{ secrets.NEWSAPI_KEY }}" >> $GITHUB_ENV
 
-    # 7. Récupérer les actualités via NewsAPI
-    - name: Fetch AI news from NewsAPI
+      # 7. Récupérer les actualités via NewsAPI
+      - name: Fetch AI news from NewsAPI
         run: |
-        python backend/news_fetcher.py  # Exécuter le script Python dans le répertoire backend
+          python backend/news_fetcher.py  # Exécuter le script Python dans le répertoire backend
 
-    # 8. Exécuter les tests pour Flask (si vous avez des tests pour Flask)
-    - name: Run Flask tests
+      # 8. Exécuter les tests pour Flask (si vous avez des tests pour Flask)
+      - name: Run Flask tests
         run: |
-        pytest backend/tests  # Exécuter les tests Flask si vous avez un dossier de tests
+          pytest backend/tests  # Exécuter les tests Flask si vous avez un dossier de tests
 
-    # 9. Construire l'application Flask (si nécessaire pour des étapes supplémentaires avant le déploiement)
-    - name: Build Flask app
+      # 9. Construire l'application Flask (si nécessaire pour des étapes supplémentaires avant le déploiement)
+      - name: Build Flask app
         run: |
-        flask db upgrade  # Appliquer les migrations de la base de données Flask si vous utilisez Flask-Migrate
+          flask db upgrade  # Appliquer les migrations de la base de données Flask si vous utilisez Flask-Migrate
 
-    # 10. Construire le frontend (React ou Vue)
-    - name: Build frontend
+      # 10. Construire le frontend (React ou Vue)
+      - name: Build frontend
         working-directory: frontend
         run: |
-        npm run build  # Construire l'application frontend (cela génère un dossier 'build')
+          npm run build  # Construire l'application frontend (cela génère un dossier 'build')
 
-    # 11. Déployer l'application sur GitHub Pages
-    - name: Deploy to GitHub Pages
+      # 11. Déployer l'application sur GitHub Pages
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-        personal_token: ${{ secrets.GITHUB_TOKEN }}  # Utilise le token secret pour autoriser l'accès
-        publish_dir: ./frontend/build  # Dossier où le frontend est généré après le build
-
-## Acomdir open source project.
+          personal_token: ${{ secrets.GITHUB_TOKEN }}  # Utilise le token secret pour autoriser l'accès
+          publish_dir: ./frontend/build  # Dossier où le frontend est généré après le build
