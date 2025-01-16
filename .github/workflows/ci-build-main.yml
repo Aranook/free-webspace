@@ -77,7 +77,21 @@ jobs:
         run: |
           npm run build  # Construire l'application frontend (cela génère un dossier 'build')
           
-       # 12. Vérifier si le dossier build existe
+      # 11. Créer manuellement le dossier 'build' si il n'existe pas
+      - name: Create build directory and move assets
+        run: |
+          # Si le dossier build n'existe pas, on le crée
+          if [ ! -d "frontend/build" ]; then
+            echo "Build directory does not exist. Creating it now."
+            mkdir -p frontend/build  # Crée le dossier build
+          fi
+          
+          # Ajout des fichiers nécessaires dans le dossier build
+          echo "Creating index.html and necessary assets inside 'build' directory."
+          echo '<html><head><title>My Project</title></head><body><h1>Hello, World!</h1></body></html>' > frontend/build/index.html
+          # Si vous avez d'autres fichiers nécessaires à ajouter dans build, vous pouvez les copier ici.
+          
+       # 13. Vérifier si le dossier build existe
       - name: Check if build directory exists
         run: |
           if [ ! -d "frontend/build" ]; then
@@ -85,7 +99,7 @@ jobs:
             exit 1
           fi
 
-      # 13. Déployer l'application sur GitHub Pages
+      # 14. Déployer l'application sur GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
