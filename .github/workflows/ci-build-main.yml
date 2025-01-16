@@ -83,4 +83,4 @@ jobs:
         with:
           personal_token: ${{ secrets.GITHUB_TOKEN }}  # Utilise le token secret pour autoriser l'accès
           publish_dir: ./frontend/build  # Dossier où le frontend est généré après le build
-          target_branch: gh-pages  # Spécifie la branche où déployer (par défaut, c'est `gh-pages`)
+          publish_branch: gh-pages  # Spécifie la branche où déployer (par défaut, c'est `gh-pages`)
