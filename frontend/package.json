@@ -1,0 +1,20 @@
+{
+  "comment": "npm install",
+  "meta": {
+    "author": "ACOMDIR",
+    "contact": "https://www.facebook.com/acomdir/",
+    "note": "Supprimer les données de ce fichier package.json avant de faire npm install"
+  },
+  "name": "ACOMDIR",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "bootstrap": "^5.3.3",
+    "lru-cache": "^11.0.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.1.1",
+    "tailwindcss": "^3.4.17",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  }
+}
