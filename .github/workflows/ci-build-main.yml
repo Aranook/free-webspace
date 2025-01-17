@@ -106,5 +106,5 @@ jobs:
           personal_token: ${{ secrets.GITHUB_TOKEN }}  # Utilise le token secret pour autoriser l'accès
           publish_dir: ./frontend/build  # Dossier où le frontend est généré après le build
           publish_branch: gh-pages  # Spécifie la branche où déployer (par défaut, c'est `gh-pages`)
-          enable_jekyll: false  # Désactiver Jekyll
+          enable_jekyll: false  # Désactiver Jekyll par défaut
           disable_nojekyll: true  # Désactiver la gestion de Jekyll pour éviter des problèmes avec des fichiers
