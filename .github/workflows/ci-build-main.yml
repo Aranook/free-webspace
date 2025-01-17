@@ -88,7 +88,7 @@ jobs:
           
           # Ajout des fichiers nécessaires dans le dossier build
           echo "Creating index.html and necessary assets inside 'build' directory."
-          echo '<html><head><title>My Project</title></head><body><h1>Hello, World!</h1></body></html>' > frontend/build/index.html
+          echo '<html><head><title>Mon Projet</title></head><body><h1>Mise en place</h1></body></html>' > frontend/build/index.html
           # Si vous avez d'autres fichiers nécessaires à ajouter dans build, vous pouvez les copier ici.
           
        # 13. Vérifier si le dossier build existe
